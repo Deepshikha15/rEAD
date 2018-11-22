@@ -1,0 +1,83 @@
+def fun(z):
+    return z + 1
+
+
+def add(x, y):
+    return x + y
+
+
+def subtract(x, y):
+    return x - y
+
+
+def multiply(x, y):
+    return x * y
+
+
+def divide(x, y):
+    if y == 0:
+        raise ValueError('Can not divide by zero!')
+    return x / y
+
+
+def xyz(endpoint, url):
+    return url, endpoint
+
+
+class MyTest(unittest.TestCase):
+    def test(self):
+        self.assertEqual(fun(3), 4)
+        self.assertLess(fun(2), 4)
+
+    def test_upper(self):
+        self.assertEqual('ok'.upper(), 'OK')
+
+    def test_isupper(self):
+        self.assertTrue('OK'.isupper())
+
+
+class TestCalc(unittest.TestCase):
+
+    def test_add(self):
+        self.assertEqual(add(10, 5), 15)
+        self.assertEqual(add(-1, 1), 0)
+        self.assertEqual(add(-1, -1), -2)
+
+    def test_subtract(self):
+        self.assertEqual(subtract(10, 5), 5)
+        self.assertEqual(subtract(-1, 1), -2)
+        self.assertEqual(subtract(-1, -1), 0)
+
+    def test_multiply(self):
+        self.assertEqual(multiply(10, 5), 50)
+        self.assertEqual(multiply(-1, 1), -1)
+        self.assertEqual(multiply(-1, -1), 1)
+
+    def test_divide(self):
+        self.assertEqual(divide(10, 5), 2)
+        self.assertEqual(divide(-1, 1), -1)
+        self.assertEqual(divide(-1, -1), 1)
+        self.assertEqual(divide(5, 2), 2.5)
+
+        with self.assertRaises(ValueError):
+            divide(10, 0)
+
+
+# class test_register_api(unittest.TestCase):
+#
+#     def register(self,urls="/api/annotator/imgidx/", endpoints="api-post-annotator-img-idx"):
+#         yield register.objects.create(urls=urls, endpoints= endpoints)
+#
+#     def test_creation(self):
+#         w = self.register()
+#         self.assertTrue(w, register)
+#         #self.assertEqual(w.__unicode__(), w.urls)
+
+
+class test(unittest.TestCase):
+    def register(username, password):
+         return username, password
+
+    def test_register(self):
+        rv = self.register('username')
+        self.assertTrue(rv)
